@@ -1,35 +1,35 @@
-import { Manrope, Inter, IBM_Plex_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import { clientConfig } from "@/data/clientConfig";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
 
 export const metadata = {
-  title: "BrightPath Dental Clinic — Ask us anything",
-  description:
-    "Get instant answers about appointments, pricing, insurance, and more from BrightPath Dental's front-desk assistant.",
+  title: `${clientConfig.business.name} — Ask us anything`,
+  description: clientConfig.copy.heroSubheadline,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-base text-primary font-body">
         {children}

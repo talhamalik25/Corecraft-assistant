@@ -82,16 +82,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What it answers (common questions) */}
+        {/* What CoreCraft can help with */}
         <section className="border-t border-border/60 bg-surface/50">
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
             <div className="max-w-2xl">
               <h2 className="text-xl font-semibold tracking-tight text-primary font-display sm:text-2xl">
-                What it can help with
+                How CoreCraft can help
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-secondary sm:text-base">
-                Common questions patients and customers ask — answered right
-                away, any time of day.
+                Common questions about websites and AI automation — answered
+                right away, any time of day.
               </p>
             </div>
 
@@ -113,16 +113,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How booking works — genuine sequence, so numbered steps are OK */}
+        {/* How the project conversation works */}
         <section className="border-t border-border/60">
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
             <div className="max-w-2xl">
               <h2 className="text-xl font-semibold tracking-tight text-primary font-display sm:text-2xl">
-                How booking works
+                How it works
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-secondary sm:text-base">
-                A simple, low-friction flow that feels like talking to a real
-                front desk.
+                A simple, low-friction flow for turning an idea into a clear
+                project plan.
               </p>
             </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services + hours */}
+        {/* Services + availability */}
         <section className="border-t border-border/60 bg-surface/50">
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
             <div className="grid gap-6 md:grid-cols-3">
@@ -172,7 +172,7 @@ export default function Home() {
               </div>
               <div className="rounded-card border border-border bg-surface p-6 shadow-soft">
                 <h3 className="text-sm font-semibold text-primary font-display">
-                  Hours
+                  Availability
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-secondary">
                   {business.hours}
@@ -255,7 +255,7 @@ export default function Home() {
               © {new Date().getFullYear()} {business.name}. {business.address}.
             </p>
             <p className="text-xs text-secondary">
-              Call us at{" "}
+              Reach us at{" "}
               <a
                 href={`tel:${business.phone.replace(/\D/g, "")}`}
                 className="text-primary underline-offset-2 hover:underline"

@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --color-base: #FAFAF8;
-  --color-surface: #FFFFFF;
-  --color-elevated: #F0F4F2;
-  --color-primary: #1F2937;
-  --color-secondary: #6B7280;
-  --color-accent: #4A9B8E;
-  --color-accent-hover: #3E857A;
-  --color-accent-soft: rgba(74, 155, 142, 0.08);
-  --color-border: rgba(31, 41, 55, 0.08);
-  --color-error: #B91C1C;
-  --color-online: #10B981;
+  --color-base: #0D0D0D;
+  --color-surface: #1A1A1A;
+  --color-elevated: #242424;
+  --color-primary: #F5F5F5;
+  --color-secondary: #A3A3A3;
+  --color-accent: #00E6D9;
+  --color-accent-hover: #00C9BE;
+  --color-accent-soft: rgba(0, 230, 217, 0.12);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-error: #F87171;
+  --color-online: #34D399;
 
-  --font-display: var(--font-manrope), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --radius-card: 16px;
   --radius-panel: 18px;
   --radius-input: 14px;
   --radius-pill: 9999px;
 
-  --shadow-soft: 0 1px 2px rgba(31, 41, 55, 0.04), 0 4px 16px rgba(31, 41, 55, 0.04);
-  --shadow-widget: 0 8px 32px rgba(31, 41, 55, 0.12), 0 2px 8px rgba(31, 41, 55, 0.06);
-  --shadow-float: 0 10px 40px rgba(31, 41, 55, 0.16);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.24);
+  --shadow-widget: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
@@ -96,10 +96,10 @@ body {
 /* Widget entrance pulse (one-shot) */
 @keyframes widget-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(74, 155, 142, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 230, 217, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(74, 155, 142, 0);
+    box-shadow: 0 0 0 8px rgba(0, 230, 217, 0);
   }
 }
 
@@ -190,11 +190,11 @@ body {
   background: transparent;
 }
 .chat-scroll::-webkit-scrollbar-thumb {
-  background: rgba(31, 41, 55, 0.12);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
 }
 .chat-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(31, 41, 55, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Mobile full-width widget sheet */

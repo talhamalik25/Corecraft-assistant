@@ -13,23 +13,6 @@ export const clientConfig = {
     hours: "Usually replies within a few hours",
   },
 
-  theme: {
-    colors: {
-      baseBackground: "#0D0D0D",
-      surface: "#1A1A1A",
-      elevatedSurface: "#242424",
-      primaryText: "#F5F5F5",
-      secondaryText: "#A3A3A3",
-      primaryAccent: "#00E6D9",
-    },
-    borderRadius: {
-      card: "16px",
-      panel: "18px",
-      button: "9999px",
-      input: "14px",
-    },
-  },
-
   copy: {
     trustIndicator: "Usually replies within a few hours",
     heroHeadline: "Got a project in mind? Let's build it.",
