@@ -66,7 +66,7 @@ export default function Home() {
             {/* In-page widget display — the hero IS the widget */}
             <div
               id="widget-hero"
-              className="mx-auto mt-14 w-full max-w-sm sm:max-w-md"
+              className="mx-auto mt-14 hidden w-full max-w-sm sm:block sm:max-w-md"
             >
               <div className="relative">
                 <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[32px] bg-gradient-to-b from-accent/[0.06] to-transparent blur-2xl" />

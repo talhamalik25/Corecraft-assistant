@@ -18,7 +18,7 @@ export default function ChatWidget() {
   }, []);
 
   return (
-    <div className="fixed widget-mobile-anchor bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="widget-mobile-anchor flex flex-col items-end gap-3">
       {/* Chat window with a smooth open/close transition */}
       <div
         className={`transition-all duration-[220ms] ease-out ${
@@ -30,18 +30,15 @@ export default function ChatWidget() {
         {isOpen && <ChatWindow onClose={() => setIsOpen(false)} />}
       </div>
 
-      {/* Floating toggle button */}
-      <button
-        type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex h-14 w-14 items-center justify-center rounded-pill bg-accent text-white shadow-float transition-all duration-200 ease-out hover:bg-accent-hover hover:scale-105 active:scale-95 ${
-          !hasPulsed ? "widget-pulse" : ""
-        }`}
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-      >
-        {isOpen ? (
-          <span className="text-xl leading-none" aria-hidden>✕</span>
-        ) : (
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className={`flex h-14 w-14 items-center justify-center rounded-pill bg-accent text-white shadow-float transition-all duration-200 ease-out hover:bg-accent-hover hover:scale-105 active:scale-95 ${
+            !hasPulsed ? "widget-pulse" : ""
+          }`}
+          aria-label="Open chat"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -55,8 +52,8 @@ export default function ChatWidget() {
           >
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
-        )}
-      </button>
+        </button>
+      )}
     </div>
   );
 }
