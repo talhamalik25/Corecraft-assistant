@@ -216,8 +216,8 @@ body {
     width: 100vw;
     max-width: none;
     bottom: var(--mobile-viewport-bottom-offset, 0px);
-    height: min(520px, calc(var(--mobile-viewport-height) * 0.5));
-    max-height: min(520px, calc(var(--mobile-viewport-height) * 0.5));
+    height: min(520px, calc(var(--mobile-viewport-height) * 0.65));
+    max-height: min(520px, calc(var(--mobile-viewport-height) * 0.65));
     min-height: 0;
     border-radius: 18px 18px 0 0;
     border-bottom-width: 0;
