@@ -33,7 +33,7 @@ export default function EmbedWidget() {
   }, [isOpen]);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="fixed inset-0">
       {/* Chat window, anchored above the toggle button */}
       <div
         className={`absolute bottom-[76px] right-2 transition-all duration-[220ms] ease-out ${
