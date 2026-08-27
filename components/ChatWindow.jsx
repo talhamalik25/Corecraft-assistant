@@ -10,17 +10,23 @@ const USER_MESSAGE_THRESHOLD = 3;
 const { business, chat, copy } = clientConfig;
 
 function useVisualViewport() {
-  const [height, setHeight] = useState(0);
+  const [viewport, setViewport] = useState({ height: 0, bottomOffset: 0 });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const updateViewport = () => {
       const visualViewport = window.visualViewport;
+      const height = visualViewport?.height || window.innerHeight;
+      const visibleBottom =
+        (visualViewport?.offsetTop || 0) + height;
+      const bottomOffset = Math.max(0, window.innerHeight - visibleBottom);
 
-      const nextHeight = visualViewport?.height || window.innerHeight;
-      setHeight((currentHeight) =>
-        currentHeight === nextHeight ? currentHeight : nextHeight
+      setViewport((currentViewport) =>
+        currentViewport.height === height &&
+        currentViewport.bottomOffset === bottomOffset
+          ? currentViewport
+          : { height, bottomOffset }
       );
     };
 
@@ -41,7 +47,7 @@ function useVisualViewport() {
     };
   }, []);
 
-  return height;
+  return viewport;
 }
 
 /**
@@ -95,14 +101,15 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
   const [leadContact, setLeadContact] = useState("");
   const [isSubmittingLead, setIsSubmittingLead] = useState(false);
   const [error, setError] = useState("");
-  const viewportHeight = useVisualViewport();
+  const viewport = useVisualViewport();
 
   const messagesEndRef = useRef(null);
 
   const mobileViewportStyle = {
-    "--mobile-viewport-height": viewportHeight
-      ? `${viewportHeight}px`
+    "--mobile-viewport-height": viewport.height
+      ? `${viewport.height}px`
       : "100dvh",
+    "--mobile-viewport-bottom-offset": `${viewport.bottomOffset}px`,
   };
 
   useEffect(() => {

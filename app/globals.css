@@ -210,13 +210,14 @@ body {
 @media (max-width: 640px) {
   .widget-mobile-sheet {
     position: fixed;
-    top: 0;
+    top: auto;
     left: 0;
     right: 0;
     width: 100vw;
     max-width: none;
-    height: var(--mobile-viewport-height);
-    max-height: var(--mobile-viewport-height);
+    bottom: var(--mobile-viewport-bottom-offset, 0px);
+    height: min(520px, calc(var(--mobile-viewport-height) * 0.5));
+    max-height: min(520px, calc(var(--mobile-viewport-height) * 0.5));
     min-height: 0;
     border-radius: 18px 18px 0 0;
     border-bottom-width: 0;
