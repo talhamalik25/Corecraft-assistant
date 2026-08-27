@@ -17,6 +17,23 @@ export default function ChatWidget() {
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen || typeof window === "undefined") return;
+
+    if (window.innerWidth >= 640) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousOverscroll = document.body.style.overscrollBehavior;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "contain";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.overscrollBehavior = previousOverscroll;
+    };
+  }, [isOpen]);
+
   return (
     <div className="widget-mobile-anchor flex flex-col items-end gap-3">
       {/* Chat window with a smooth open/close transition */}

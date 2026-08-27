@@ -6,12 +6,15 @@
   --color-elevated: #242424;
   --color-primary: #F5F5F5;
   --color-secondary: #A3A3A3;
-  --color-accent: #00E6D9;
-  --color-accent-hover: #00C9BE;
-  --color-accent-soft: rgba(0, 230, 217, 0.12);
+  --color-accent: #00a896;
+  --color-accent-hover: #008f80;
+  --color-accent-soft: rgba(0, 168, 150, 0.12);
   --color-border: rgba(255, 255, 255, 0.08);
   --color-error: #F87171;
   --color-online: #34D399;
+
+  --mobile-viewport-height: 100dvh;
+  --mobile-viewport-offset-top: 0px;
 
   --font-display: var(--font-syne), system-ui, sans-serif;
   --font-body: var(--font-dm-sans), system-ui, sans-serif;
@@ -96,10 +99,10 @@ body {
 /* Widget entrance pulse (one-shot) */
 @keyframes widget-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(0, 230, 217, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 168, 150, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(0, 230, 217, 0);
+    box-shadow: 0 0 0 8px rgba(0, 168, 150, 0);
   }
 }
 
@@ -208,16 +211,17 @@ body {
 @media (max-width: 640px) {
   .widget-mobile-sheet {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     width: 100vw;
     max-width: none;
-    height: calc(100dvh - 12px);
+    height: var(--mobile-viewport-height);
     min-height: 0;
-    max-height: none;
+    max-height: var(--mobile-viewport-height);
     border-radius: 18px 18px 0 0;
     border-bottom-width: 0;
+    transform: translateY(var(--mobile-viewport-offset-top));
+    transition: height 0.18s ease, transform 0.18s ease;
+    -webkit-overflow-scrolling: touch;
   }
   .widget-mobile-anchor {
     right: max(16px, env(safe-area-inset-right));

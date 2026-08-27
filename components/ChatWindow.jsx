@@ -9,6 +9,41 @@ const USER_MESSAGE_THRESHOLD = 3;
 
 const { business, chat, copy } = clientConfig;
 
+function useVisualViewport() {
+  const [viewport, setViewport] = useState({ height: 0, offsetTop: 0 });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const updateViewport = () => {
+      const visualViewport = window.visualViewport;
+
+      setViewport({
+        height: visualViewport ? visualViewport.height : window.innerHeight,
+        offsetTop: visualViewport ? visualViewport.offsetTop : 0,
+      });
+    };
+
+    updateViewport();
+
+    const visualViewport = window.visualViewport;
+
+    visualViewport?.addEventListener("resize", updateViewport);
+    visualViewport?.addEventListener("scroll", updateViewport);
+    window.addEventListener("resize", updateViewport);
+    window.addEventListener("orientationchange", updateViewport);
+
+    return () => {
+      visualViewport?.removeEventListener("resize", updateViewport);
+      visualViewport?.removeEventListener("scroll", updateViewport);
+      window.removeEventListener("resize", updateViewport);
+      window.removeEventListener("orientationchange", updateViewport);
+    };
+  }, []);
+
+  return viewport;
+}
+
 /**
  * Builds a plain-text summary of the conversation for saving with the lead.
  */
@@ -60,8 +95,17 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
   const [leadContact, setLeadContact] = useState("");
   const [isSubmittingLead, setIsSubmittingLead] = useState(false);
   const [error, setError] = useState("");
+  const viewport = useVisualViewport();
 
   const messagesEndRef = useRef(null);
+
+  const mobileViewportStyle =
+    typeof window !== "undefined" && window.innerWidth < 640
+      ? {
+          "--mobile-viewport-height": `${viewport.height}px`,
+          "--mobile-viewport-offset-top": `${viewport.offsetTop}px`,
+        }
+      : undefined;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -174,6 +218,7 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
       className={`widget-mobile-sheet flex h-[520px] w-full max-w-[360px] sm:max-w-[380px] flex-col overflow-hidden rounded-panel border border-border bg-surface shadow-widget ${
         isEmbedded ? "" : ""
       }`}
+      style={mobileViewportStyle}
     >
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-3.5">
@@ -206,7 +251,7 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
       </div>
 
       {/* Scrollable message list */}
-      <div className="chat-scroll flex-1 space-y-3 overflow-y-auto px-4 py-4 bg-base">
+      <div className="chat-scroll flex-1 min-h-0 space-y-3 overflow-y-auto overscroll-contain px-4 py-4 bg-base">
         {messages.map((message, index) => (
           <MessageBubble
             key={`${message.role}-${index}`}
