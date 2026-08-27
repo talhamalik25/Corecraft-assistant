@@ -103,7 +103,6 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
     typeof window !== "undefined" && window.innerWidth < 640
       ? {
           "--mobile-viewport-height": `${viewport.height}px`,
-          "--mobile-viewport-offset-top": `${viewport.offsetTop}px`,
         }
       : undefined;
 
@@ -310,7 +309,7 @@ export default function ChatWindow({ onClose, isEmbedded = false }) {
       {/* Message input */}
       <form
         onSubmit={handleSendMessage}
-        className="border-t border-border bg-surface p-3"
+        className="border-t border-border bg-surface p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
       >
         <div className="flex gap-2">
           <input

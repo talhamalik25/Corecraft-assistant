@@ -14,7 +14,6 @@
   --color-online: #34D399;
 
   --mobile-viewport-height: 100dvh;
-  --mobile-viewport-offset-top: 0px;
 
   --font-display: var(--font-syne), system-ui, sans-serif;
   --font-body: var(--font-dm-sans), system-ui, sans-serif;
@@ -211,16 +210,17 @@ body {
 @media (max-width: 640px) {
   .widget-mobile-sheet {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100vw;
     max-width: none;
     height: var(--mobile-viewport-height);
-    min-height: 0;
     max-height: var(--mobile-viewport-height);
+    min-height: 0;
     border-radius: 18px 18px 0 0;
     border-bottom-width: 0;
-    transform: translateY(var(--mobile-viewport-offset-top));
-    transition: height 0.18s ease, transform 0.18s ease;
+    transition: height 0.18s ease;
     -webkit-overflow-scrolling: touch;
   }
   .widget-mobile-anchor {
